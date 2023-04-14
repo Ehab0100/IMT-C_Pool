@@ -1,3 +1,8 @@
+/**
+*c code that will ask the user to enter four values a,b,c and d
+then evaluates the ratio of (a + b) to (c-d) and prints the result,
+ if (c-d) is not equal zero
+*/
 
 /* Include stdio.h library To use printf and scanf function */
 #include <stdio.h>
