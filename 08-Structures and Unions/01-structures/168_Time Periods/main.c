@@ -1,53 +1,87 @@
-/***************************************************************************************/
-/****************************  IMT School Training Center ******************************/
-/***************************************************************************************/
-/** This file is developed by IMT School training center, All copyrights are reserved **/
-/***************************************************************************************/
+/**
+* Write c program to Calculate Difference Between Two
+   Time Periods using structurs.
+*/
+
 
 #include <stdio.h>
-struct TIME
+/* declare structure for time period */
+typedef struct
 {
-  int seconds;
-  int minutes;
-  int hours;
-};
-void differenceBetweenTimePeriod(struct TIME t1, struct TIME t2, struct TIME *diff);
+    int hrs,min,sec;
+}time;
+
+/* prototype of the functions */
+void scan_time(time*ptr);
+void print_time_difference(time*start,time*stop,time*period);
+void get_time_difference(time*start,time*stop,time*period);
 
 int main()
 {
-    struct TIME startTime, stopTime, diff;
+    /* declare 3_structures variables for time periods */
+    time start,stop,period;
 
-    printf("Enter start time: \n");
-    printf("Enter hours, minutes and seconds respectively: ");
-    scanf("%d %d %d", &startTime.hours, &startTime.minutes, &startTime.seconds);
+    /* input start period from the user */
+    printf("Enter start time:\n");
+    scan_time(&start);
 
-    printf("Enter stop time: \n");
-    printf("Enter hours, minutes and seconds respectively: ");
-    scanf("%d %d %d", &stopTime.hours, &stopTime.minutes, &stopTime.seconds);
+     /* input stop period from the user */
+    printf("Enter stop time:\n");
+    scan_time(&stop);
 
-    // Calculate the difference between the start and stop time period.
-    differenceBetweenTimePeriod(startTime, stopTime, &diff);
+    /* get time difference using function & store it in period variable */
+    get_time_difference(&start,&stop,&period);
 
-    printf("\nTIME DIFFERENCE: %d:%d:%d - ", startTime.hours, startTime.minutes, startTime.seconds);
-    printf("%d:%d:%d ", stopTime.hours, stopTime.minutes, stopTime.seconds);
-    printf("= %d:%d:%d\n", diff.hours, diff.minutes, diff.seconds);
+    /* print the time difference */
+    print_time_difference(&start,&stop,&period);
 
     return 0;
 }
 
-void differenceBetweenTimePeriod(struct TIME start, struct TIME stop, struct TIME *diff)
+/**
+* scan_time - function to scan period from the user
+* @ptr : pointer to structure
+*/
+
+void scan_time(time*ptr)
 {
-    if(stop.seconds > start.seconds){
-        --start.minutes;
-        start.seconds += 60;
-    }
-
-    diff->seconds = start.seconds - stop.seconds;
-    if(stop.minutes > start.minutes){
-        --start.hours;
-        start.minutes += 60;
-    }
-
-    diff->minutes = start.minutes - stop.minutes;
-    diff->hours = start.hours - stop.hours;
+    printf("Enter hours,minutes and seconds respectively: ");
+    scanf("%i%i%i",&ptr->hrs,&ptr->min,&ptr->sec);
 }
+
+/**
+* print_time_difference - function to print difference period
+* @start,stop,period : pointers to structure
+*/
+
+void print_time_difference(time*start,time*stop,time*period)
+{
+    printf("TIME DIFFERENCE= %i:%i:%i ",start->hrs,start->min,start->sec);
+    printf("- %i:%i:%i = %i:%i:%i \n\n",stop->hrs,stop->min,stop->sec,period->hrs,period->min,period->sec);
+}
+
+/**
+* get_time_difference - function to get difference period
+* @start,stop,period : pointers to structure
+*/
+
+void get_time_difference(time*start,time*stop,time*period)
+{
+   if(stop->sec > start->sec)
+    {
+        start->min--;
+        start->sec += 60;
+    }
+
+    period->sec = start->sec - stop->sec;
+
+    if(stop->min > start->min)
+    {
+        --start->hrs;
+        start->min += 60;
+    }
+
+    period->min = start->min - stop->min;
+    period->hrs = start->hrs - stop->hrs;
+}
+
