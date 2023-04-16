@@ -1,6 +1,6 @@
 /**
- * C program to compute the real roots of the equation:
-                 ax2+bx+c=0
+ * C program to compute the roots of the equation:
+                    ax2+bx+c=0
  The program will prompt the user to input the values of a, b, and c.
  It then computes the roots of the equation based on rules.
  */
