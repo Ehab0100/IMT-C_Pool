@@ -1,5 +1,5 @@
 /**
-* Write c program to Calculate Difference Between Two
+* C program to Calculate Difference Between Two
    Time Periods using structurs.
 */
 
